@@ -1,49 +1,91 @@
-export const Cabecalho =() => {
+export const Cabecalho =({busca, buscaODA}) => {
+  var logoboca=require('./img/logo.png');
+//   var perfil=require('./img/img-perfil.png');
+  var perfil_pedro=require('./img/img_Pedro.jpg');
     return(
         <html>
         <head>
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"></link>
-            <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet"></link>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+            <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'></link>
         </head>
         <body>
-        <nav class="navbar navbar-expand-lg bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">BocaWeb Front</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></hr></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            {/* <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li> */}
-          </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+        <div id="sidebar-menu" className="sidebar">
+        <div className="logo-details">
+          <img src={logoboca} alt="Logo BocaWeb" />
+          <span className="logo_name">BocaWeb</span>
         </div>
+          <ul className="nav-links">
+            <li>
+              <a href="#!" className="active">
+                <i className="fas fa-info-circle"></i>
+                <span className="links_name">Sobre o BocaWeb</span>
+              </a>
+            </li>
+            <li>
+              <a href="#!">
+                <i className='bx bx-box' ></i>
+                <span className="links_name">Produtos</span>
+              </a>
+            </li>
+            <li>
+              <a href="#!">
+                <i className='bx bx-pie-chart-alt-2' ></i>
+                <span className="links_name">Estatísticas</span>
+              </a>
+            </li>
+            <li>
+              <a href="#!">
+                <i className='bx bx-user' ></i>
+                <span className="links_name">Team</span>
+              </a>
+            </li>
+            <li>
+              <a href="#!">
+                <i className='bx bx-message' ></i>
+                <span className="links_name">Mensagens</span>
+              </a>
+            </li>
+            <li>
+              <a href="#!">
+                <i className='bx bx-heart' ></i>
+                <span className="links_name">Favoritos</span>
+              </a>
+            </li>
+            <li>
+              <a href="#!">
+                <i className='bx bx-cog' ></i>
+                <span className="links_name">Configurações</span>
+              </a>
+            </li>
+            <li className="log_out">
+              <a href="#!">
+                <i className='bx bx-log-out'></i>
+                <span className="links_name">Log out</span>
+              </a>
+            </li>
+          </ul>
       </div>
-    </nav>
 
+      <section className="home-section">
+        <nav>
+          <div className="sidebar-button">
+            <i id='sidebarBtn-menu' className='bx bx-menu sidebarBtn' onClick={() => {let sidebar = document.querySelector(".sidebar"); 
+            let sidebarBtn = document.querySelector(".sidebarBtn"); sidebar.classList.toggle("active");
+              if(sidebar.classList.contains("active")){ sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right"); }else{
+              sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");}}}></i>
+            <span className="dashboard">BocaWeb Front</span>
+          </div>
+          <div className="search-box">
+            <input name="busca" type="text" className="form-control" value={busca} placeholder="Pesquise uma ODA" aria-label="Search" aria-describedby="search-addon1" onChange={buscaODA}></input>
+            <i className='bx bx-search' ></i>
+          </div>
+          <div className="profile-details">
+            <img src={perfil_pedro} alt="Imagem Pedro Mota"/>
+            <span className="admin_name">Pedro Mota</span>
+            <i className='bx bx-chevron-down'></i>
+          </div>
+        </nav>
+      </section>
         </body>
         </html>
     )
